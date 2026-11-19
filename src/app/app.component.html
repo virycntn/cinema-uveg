@@ -1,0 +1,20 @@
+<header class="app-header">
+  <div class="header-content">
+    <h1>{{ title }}</h1>
+    <p>Catálogo de películas mejor valoradas — API The Movie Database (TMDB)</p>
+  </div>
+</header>
+
+<main class="main-layout">
+  <section class="list-section">
+    <app-movie-list (movieSelected)="onSelectMovie($event)"></app-movie-list>
+  </section>
+
+  <aside class="detail-section">
+    <app-movie-detail
+      [movieId]="selectedMovieId"
+      (closeDetail)="onClearSelection()">
+    </app-movie-detail>
+  </aside>
+</main>
+

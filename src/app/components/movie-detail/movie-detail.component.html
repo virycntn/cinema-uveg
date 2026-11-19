@@ -1,0 +1,41 @@
+<div class="detail-panel">
+  <div *ngIf="!movieId && !isLoading" class="empty-state">
+    <h3>Detalle de película</h3>
+    <p>Presiona cualquier película de la lista para consultar su sinopsis, géneros, duración y calificación.</p>
+  </div>
+
+  <p *ngIf="isLoading" class="status-message">Cargando información de la película...</p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+  <div *ngIf="movie && !isLoading" class="detail-card">
+    <img
+      class="backdrop-img"
+      [src]="getImageUrl(movie.backdrop_path || movie.poster_path)"
+      [alt]="movie.title">
+
+    <div class="detail-body">
+      <div class="detail-header">
+        <h2>{{ movie.title }}</h2>
+        <button type="button" class="close-btn" (click)="onClose()">Cerrar</button>
+      </div>
+
+      <p *ngIf="movie.tagline" class="tagline">"{{ movie.tagline }}"</p>
+
+      <div class="genres-list">
+        <span *ngFor="let genre of movie.genres" class="genre-badge">
+          {{ genre.name }}
+        </span>
+      </div>
+
+      <div class="specs">
+        <span><strong>Estreno:</strong> {{ movie.release_date }}</span>
+        <span><strong>Duración:</strong> {{ movie.runtime }} min</span>
+        <span><strong>Calificación:</strong> {{ movie.vote_average | number:'1.1-1' }} ({{ movie.vote_count }} votos)</span>
+      </div>
+
+      <h4>Sinopsis</h4>
+      <p class="overview">{{ movie.overview || 'Sin descripción disponible en español.' }}</p>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="list-container">
+  <h2>Películas mejor valoradas</h2>
+
+  <p *ngIf="isLoading" class="status-message">Cargando catálogo de películas...</p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+  <div *ngIf="!isLoading && !errorMessage" class="movies-grid">
+    <article
+      *ngFor="let movie of movies"
+      class="movie-card"
+      [class.selected]="movie.id === selectedId"
+      (click)="selectMovie(movie.id)">
+      <img [src]="getPosterUrl(movie.poster_path)" [alt]="movie.title">
+      <div class="movie-info">
+        <h3>{{ movie.title }}</h3>
+        <div class="movie-meta">
+          <span class="release-date">{{ movie.release_date }}</span>
+          <span class="rating">{{ movie.vote_average | number:'1.1-1' }} / 10</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+
+

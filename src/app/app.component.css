@@ -1,0 +1,39 @@
+.app-header {
+  background-color: #0d253f;
+  color: #ffffff;
+  padding: 20px 32px;
+  border-bottom: 4px solid #01b4e4;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header-content h1 {
+  margin: 0 0 6px 0;
+  font-size: 28px;
+}
+
+.header-content p {
+  margin: 0;
+  color: #90cea1;
+  font-size: 14px;
+}
+
+.main-layout {
+  max-width: 1280px;
+  margin: 24px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
